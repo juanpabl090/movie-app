@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Form, Navbar, Button } from 'react-bootstrap';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function NavbarComponent() {
+
   return (
     <header>
       <Navbar bg="dark" variant="dark">

@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { MovieContextProvider } from './context/movieProvider'
 
 import Details from './pages/details'
-import Home from './pages/home'
+import Home from './pages/Home'
 import NavbarComponent from './components/Navbar'
 import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
-    <MovieContextProvider value='soy un valor de contexto'>
+    <MovieContextProvider>
       <div className="app">
         <BrowserRouter>
           <NavbarComponent />

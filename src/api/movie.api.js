@@ -18,5 +18,8 @@ export const getMovieListSearch = async (query) =>
 export const getTrending = async () =>
   await axios.get('https://api.themoviedb.org/3/trending/movie/week?language=en-US', options)
 
-export const getDetails = async (review_id) =>
-  await axios.get(`https://api.themoviedb.org/3/review/${review_id}`, options)
+export const getDetails = async (movie_id) =>
+  await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}`, options)
+
+export const getCredits = async (movie_id) =>
+  axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits`, options)
