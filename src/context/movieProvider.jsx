@@ -2,9 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext, createContext } from "react";
 import {
-  getTrending,
-  getCredits,
-  getDetails
+  getMovieListSearch
 } from '../api/movie.api'
 
 export const movieContext = createContext();
@@ -19,35 +17,14 @@ export const useMovies = () => {
 export const MovieContextProvider = ({ children }) => {
   const [movies, setMovies] = useState();
 
-  const loadTrending = async () => {
-    try {
-      const res = await getTrending();
-      setMovies(res.data);
-    } catch (error) {
-      console.log(error)
-    }
-  };
-
-  const loadDetails = async (movie_id) => {
-    try {
-      const res = await getDetails(movie_id)
-      setMovies(res.data)
-    } catch (error) {
-      console.log(error)
-    }
-  };
-
-  const loadCredits = async (movie_id) => {
-    try {
-      const res = await getCredits(movie_id)
-      setMovies(res.data)
-    } catch (error) {
-      console.log(error)
-    }
-  };
+  const loadSearch = async (query) => {
+    const res = await getMovieListSearch(query)
+    setMovies(res.data)
+    console.log(res.data)
+  }
 
   return (
-    <movieContext.Provider value={{ movies, loadTrending, loadDetails, loadCredits, getCredits }}>
+    <movieContext.Provider value={{ movies, loadSearch }}>
       {children}
     </movieContext.Provider>
   )

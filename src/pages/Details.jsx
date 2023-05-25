@@ -27,35 +27,40 @@ export default function Details() {
     loadDetails()
   }, []);
 
-
   return (
-    <Container>
-      <Container >
+    <Container fluid>
+      <Container fluid>
         <Row>
           <Col>
             {
               movies === undefined
                 ? <></>
-                : <ImageComponent src={movies.backdrop_path} size='original' />
+                : < ImageComponent src={movies.backdrop_path} size='original' />
             }
           </Col>
         </Row>
       </Container>
       <Container fluid>
-        <Row>
+        <Row >
           <Col className='d-flex justify-content-center'>
             <h1>{
               movies === undefined
                 ? <></>
-                : movies.title}</h1>
+                : movies.title}
+            </h1>
+          </Col>
+          <Col className='d-flex justify-content-center'>
+            <h4>{
+              movies === undefined
+                ? <></>
+                : movies.release_date}
+            </h4>
           </Col>
         </Row>
       </Container>
       <Container>
         <Row>
-          <Col>
-          </Col>
-          <Col>
+          <Col className='d-flex justify-content-center'>
             <p>{
               movies === undefined
                 ? <></>

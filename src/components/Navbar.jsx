@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Container, Form, Navbar, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Container, Navbar, Form, Button } from 'react-bootstrap'
+import { Link, useNavigate, } from 'react-router-dom'
 
 export default function NavbarComponent() {
+
+  const Navigate = useNavigate()
 
   return (
     <header>
@@ -18,10 +20,10 @@ export default function NavbarComponent() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-primary">Search</Button>
+            <Button variant="outline-primary" onClick={() => { Navigate(`/search/:1`) }}>Search</Button>
           </Form>
         </Container>
       </Navbar>
-    </header>
+    </header >
   )
 }

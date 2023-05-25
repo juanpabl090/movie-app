@@ -13,7 +13,10 @@ export default function CardComponent({ title, poster_path, id }) {
       border: "none",
       cursor: "pointer",
     }}>
-      <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w300/${poster_path}`} onClick={() => { Navigate(`/details/${id}`) }} />
+      <Card.Img variant="top"
+        src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+        onClick={() => { Navigate(`/details/${id}`) }}
+      />
       <Card.Body>
         <Card.Title onClick={() => { Navigate(`/details/:${id}`) }}>{title}</Card.Title>
       </Card.Body>
