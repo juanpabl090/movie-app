@@ -16,7 +16,7 @@ export default function App() {
           <Routes>
             <Route index path='/' element={<Home />} />
             <Route path='/details/:id' element={<Details />} />
-            <Route path='/search/:id' element={<Found />} />
+            <Route path='/search' element={<Found />} />
 
             <Route path='*' element={<NotFound />} />
           </Routes>

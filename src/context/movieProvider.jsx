@@ -17,14 +17,18 @@ export const useMovies = () => {
 export const MovieContextProvider = ({ children }) => {
   const [movies, setMovies] = useState();
 
-  const loadSearch = async (query) => {
-    const res = await getMovieListSearch(query)
-    setMovies(res.data)
-    console.log(res.data)
+  const getSearch = async (query) => {
+    try {
+      const res = await getMovieListSearch(query)
+      JSON.stringify(res)
+      setMovies(res.data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
-    <movieContext.Provider value={{ movies, loadSearch }}>
+    <movieContext.Provider value={{ movies, getSearch }}>
       {children}
     </movieContext.Provider>
   )

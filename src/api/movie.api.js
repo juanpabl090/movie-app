@@ -13,7 +13,7 @@ const options = {
 };
 
 export const getMovieListSearch = async (query) =>
-  await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}}&include_adult=false&language=en-US&page=1`, options)
+  await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`, options)
 
 export const getTrending = async () =>
   await axios.get('https://api.themoviedb.org/3/trending/movie/week?language=en-US', options)
