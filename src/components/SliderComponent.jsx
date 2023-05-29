@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
-import { Container, Row, Col, Image } from 'react-bootstrap'
-import { motion } from 'framer-motion';
+import { Container, Row } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom';
 import { getCredits } from '../api/movie.api';
 import ImageComponent from './ImageComponent';
+import NoImageComponent from './NoImageComponent';
 
-import '../css/details.css'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+
+import '@splidejs/react-splide/css';
 
 export default function SliderComponent() {
 
@@ -30,27 +32,36 @@ export default function SliderComponent() {
   return (
     <Container>
       <Row>
-        <Col>
-          <motion.div className='slider-container'>
-            <motion.div className='slider' drag='x'
-              dragConstraints={{ right: 0, left: -6100 }} >
-              {
-                movies.map((movie) => (
-                  <motion.div className='item' key={movie.id}>
-                    {
-                      movie.profile_path === null
-                        ? <Col md='10' sm='8' xs='6'><Image src='../../public/No-Image-Placeholder.svg' /></Col>
-                        : <ImageComponent size={'original'} src={movie.profile_path} />
-                    }
-                    <p className='text-center'>&#34;{movie.character}&#34;</p>
-                    <p className='text-center'>{movie.name}</p>
-                  </motion.div>
-                ))
-              }
-            </motion.div>
-          </motion.div>
-        </Col>
+        <Splide options={{
+          type: 'loop',
+          rewind: true,
+          autoplay: true,
+          perMove: 1,
+          perPage: 2,
+          gap: '1rem',
+          arrows: true,
+          pagination: false,
+          autoScroll: {
+            pauseOnHover: true,
+            pauseOnFocus: false,
+            speed: 1
+          },
+        }}>
+          {
+            movies.map((movie, index) => (
+              <SplideSlide key={index}>
+                {
+                  movie.profile_path === null
+                    ? <NoImageComponent />
+                    : <ImageComponent size={'original'} src={movie.profile_path} />
+                }
+                <p className='text-center'>&#34;{movie.character}&#34;</p>
+                <p className='text-center'>{movie.name}</p>
+              </SplideSlide>
+            ))
+          }
+        </Splide>
       </Row>
-    </Container>
+    </Container >
   )
 }
